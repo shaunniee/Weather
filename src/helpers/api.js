@@ -6,6 +6,7 @@ export default {
       url: process.env.REACT_APP_WEATHER_API_URL,
       headers: {
         "content-type": "application/octet-stream",
+        'access-control-allow-origin': '*'
       },
       params: {
         key: process.env.REACT_APP_WEATHER_API_KEY,
@@ -18,6 +19,7 @@ export default {
       url: process.env.REACT_APP_WEATHER_API_URL_SEARCH,
       headers: {
         "content-type": "application/octet-stream",
+        'access-control-allow-origin': '*'
       },
       params: {
         key: process.env.REACT_APP_WEATHER_API_KEY,
@@ -31,6 +33,7 @@ export default {
       url: process.env.REACT_APP_WEATHER_API_URL_ASTRO,
       headers: {
         "content-type": "application/octet-stream",
+        'access-control-allow-origin': '*'
       },
       params: {
         key: process.env.REACT_APP_WEATHER_API_KEY,
@@ -44,6 +47,7 @@ export default {
       url: process.env.REACT_APP_WEATHER_API_URL_FORECAST,
       headers: {
         "content-type": "application/octet-stream",
+        'access-control-allow-origin': '*'
       },
       params: {
         key: process.env.REACT_APP_WEATHER_API_KEY,
