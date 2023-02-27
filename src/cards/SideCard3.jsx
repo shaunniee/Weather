@@ -1,25 +1,27 @@
 import React from "react";
-import { BsSun, BsMoonStars } from "react-icons/bs";
 import styles from "./sidecard3.module.scss";
-function SideCard3({data}) {
+import json from "../weather/64x64/weather.json"
+function SideCard3({forecast}) {
+  const day=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
   return (
     <div className={styles.card}>
-      <div className={styles.head}>
-        <span className={styles.head__date}>{data&& data.date}</span>
-        {/* <span>Wednesday</span> */}
-      </div>
-      <div className={styles.body}>
-        <span>
-         <span className={styles.ico}> <BsSun /></span>
-          {data && data.day&& data.day.maxtemp_c} &deg; C
+    <p className={styles.card__title}>7-day forecast</p>
+    <div className={styles.card__grid}>
+      {forecast&& forecast.forecastday&& forecast.forecastday.map((val,ind)=>(
+        <div className={styles.card__item}>
+        <span className={styles.card__item_time}>{day[new Date(val.date).getDay()]}</span>
+        <span className={styles.card__item_icon}>
+          {/* <BsFillCloudSunFill />  */}
+          <img src={require(`../weather/64x64/day/${json.find(X=>X.code===val.day.condition.code).icon}.png`)} alt="icon" />
+         {}
         </span>
-        <span>
-          <span className={styles.ico}><BsMoonStars /></span>
-          {data && data.day&& data.day.mintemp_c} &deg; C
-        </span>
-        <span className={styles.condition}>{data && data.day&& data.day.condition && data.day.condition.text}</span>
+        <span className={styles.card__item_temp}>{`${val.day.maxtemp_c}/${val.day.mintemp_c}`} &deg; C</span>
       </div>
+      ))}
+      
+      
     </div>
+  </div>
   );
 }
 

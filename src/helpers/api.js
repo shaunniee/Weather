@@ -11,6 +11,7 @@ export default {
       params: {
         key: process.env.REACT_APP_WEATHER_API_KEY,
         q: query,
+        aqi:'yes'
       },
     })},
   searchData: (query) => {
@@ -24,6 +25,7 @@ export default {
       params: {
         key: process.env.REACT_APP_WEATHER_API_KEY,
         q: query,
+        aqi:'yes'
       },
     });
   },
@@ -38,6 +40,7 @@ export default {
       params: {
         key: process.env.REACT_APP_WEATHER_API_KEY,
         q: query,
+        aqi:'yes'
       },
     });
   },
@@ -52,7 +55,8 @@ export default {
       params: {
         key: process.env.REACT_APP_WEATHER_API_KEY,
         q: query,
-        days:7
+        days:7,
+        aqi:'yes'
       },
     });
   }

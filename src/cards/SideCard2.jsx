@@ -1,61 +1,69 @@
 import React from "react";
 import styles from "./sidecard.module.scss";
-import {
-  BsFillSunriseFill,
-  BsFillSunsetFill,
-  BsFillMoonStarsFill,
-} from "react-icons/bs";
-import { WiMoonrise, WiMoonset, WiMoonAltThirdQuarter } from "react-icons/wi";
+import { FaTemperatureLow ,FaWind} from "react-icons/fa";
+import { WiMoonrise, WiMoonset, WiMoonAltThirdQuarter,WiHumidity } from "react-icons/wi";
+import {CiSun} from "react-icons/ci"
+import {GiWaterDrop} from "react-icons/gi";
+import {FiSunrise,FiSunset} from "react-icons/fi"
 function SideCard2({ data }) {
   console.log(data);
   return (
     <div className={styles.card}>
-      <div className={styles._left}>
-        <span>
-          Sunrise
-          <span className={styles._ico}>
-            {" "}
-            <BsFillSunriseFill />
+      <p className={styles.card__title}>Air Conditions</p>
+      <div className={styles.grid2}>
+        <div className={styles.item2}>
+          <span className={styles.item2_ico}>
+            <FaTemperatureLow />
           </span>
-        </span>
-        <span>
-          Sunset{" "}
-          <span className={styles._ico}>
-            <BsFillSunsetFill />
+          <div className={styles.item2_data}>
+            <span className={styles.item2_data_title}>Real Feel</span>
+            <span className={styles.item2_data_value}>{data&&data.current&&data.current.temp_c} &deg; C</span>
+          </div>
+        </div>
+        <div className={styles.item2}>
+          <span className={styles.item2_ico}>
+            <FaWind />
           </span>
-        </span>
-        <span>
-          Moonrise
-          <span className={styles._ico}>
-            <WiMoonrise />
+          <div className={styles.item2_data}>
+            <span className={styles.item2_data_title}>Wind</span>
+            <span className={styles.item2_data_value}>{data&&data.current&&data.current.wind_kph} Km/h</span>
+          </div>
+        </div>
+        <div className={styles.item2}>
+          <span className={styles.item2_ico}>
+            <GiWaterDrop />
           </span>
-        </span>
-        <span>
-          Moonset{" "}
-          <span className={styles._ico}>
-            <WiMoonset />
+          <div className={styles.item2_data}>
+            <span className={styles.item2_data_title}>Amount of rain</span>
+            <span className={styles.item2_data_value}>{data&&data.current&&data.current.precip_mm} mm</span>
+          </div>
+        </div>
+        <div className={styles.item2}>
+          <span className={styles.item2_ico}>
+            <CiSun />
           </span>
-        </span>
-        <span>
-          Moon phase{" "}
-          <span className={styles._ico}>
-            <WiMoonAltThirdQuarter />
+          <div className={styles.item2_data}>
+            <span className={styles.item2_data_title}>
+              UV Index
+            </span>
+            <span className={styles.item2_data_value}>{data&&data.current&&data.current.uv}</span>
+          </div>
+          
+        </div>
+        <div className={styles.item2}>
+          <span className={styles.item2_ico}>
+            <WiHumidity />
           </span>
-        </span>
-        <span>
-          Moon illumination{" "}
-          <span className={styles._ico}>
-            <BsFillMoonStarsFill />
-          </span>
-        </span>
-      </div>
-      <div className={styles._right_1}>
-        <span>{data && data.sunrise}</span>
-        <span>{data && data.sunset}</span>
-        <span>{data && data.moonrise}</span>
-        <span>{data && data.moonset}</span>
-        <span>{data && data.moon_phase}</span>
-        <span>{data && data.moon_illumination}</span>
+          <div className={styles.item2_data}>
+            <span className={styles.item2_data_title}>
+              Humidity
+            </span>
+            <span className={styles.item2_data_value}>{data&&data.current&&data.current.humidity} %</span>
+          </div>
+          
+        </div>
+
+       
       </div>
     </div>
   );

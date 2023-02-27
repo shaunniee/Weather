@@ -10,10 +10,13 @@ function App() {
 
   return (
     <>
-      <Router>
+      {/* <Router>
         <Routes>
           <Route path="/" element={<Layout />} />
         </Routes>
+      </Router> */}
+      <Router>
+      <Layout/>
       </Router>
     </>
   );

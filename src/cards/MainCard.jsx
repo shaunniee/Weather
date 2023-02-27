@@ -1,58 +1,57 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./maincard.module.scss";
-import api from "../helpers/api";
-import { useSearchParams } from 'react-router-dom';
+import json from "../weather/64x64/weather.json";
+import Clock from "react-live-clock";
+import GaugeChart from "react-gauge-chart";
+import { GiWaterDrop } from "react-icons/gi";
 
-function MainCard({data,setData}) {
-  const [searchParams] = useSearchParams();
-
-  const search = searchParams.get('search')
-  console.log(search);
-  useEffect(() => {
-    checkLocation();
-  }, [search]);
-
-  const checkLocation = () => {
-    if (search) {
-      api
-        .getData(search)
-        .then((res) => {
-          console.log(res);
-          setData(res.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-    if(!search){
-      console.log("hihi")
-      api
-      .getData(`51.52,-0.11`)
-      .then((res) => {
-        console.log(res);
-        setData(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-    }
-  };
+function MainCard({ data, forecast,show }) {
 
   return (
     <div className={styles.card}>
-      <span className={styles.card__city}>
-        {data && data.location && data.location.name && data.location.name}
-      </span>
-      <span className={styles.card__temp}>
-        {data && data.current && data.current.temp_c && data.current.temp_c}{" "}
-        &deg; C
-      </span>
-      <span className={styles.card__condition}>
-        {data &&
-          data.current &&
-          data.current.condition &&
-          data.current.condition.text}
-      </span>
+      <div className={styles.card__left}>
+        <h1 className={styles.card__city}>
+          {data && data.location && data.location.name}
+        </h1>
+        <p className={styles.card__rain}>
+          Chances of rain: {console.log(forecast)}
+          {forecast &&
+            forecast.forecastday &&
+            forecast.forecastday[0].day.daily_chance_of_rain}
+          %
+        </p>
+        <h2 className={styles.card__temp}>
+          {data && data.current && data.current.temp_c} &deg; C
+        </h2>
+        <div className={styles.card__right}>
+        <img src={data && data.current && data.current.condition.icon} alt="" />
+      </div>
+      </div>
+      
+      {/* <div className={styles.time}>
+      <Clock  format={"dddd"} ticking={true} timezone={`${data && data.location&& data.location.tz_id}`} />
+        <Clock  format={"h:mm:ss a"} ticking={true} timezone={`${data && data.location&& data.location.tz_id}`} />
+
+      </div> */}
+     {!show&& <div className={styles.cardSection}>
+        <div className={styles.cardSection__block}>
+          <GaugeChart
+            percent={data&&data.current&&data.current.uv/10}
+            nrOfLevels={11}
+            formatTextValue={(value) => value / 10}
+            id="gauge-chart1"
+          />
+          <p className={styles.blockName}>UV Index</p>
+        </div>
+        <div className={styles.cardSection__block}>
+          <GaugeChart
+            percent={data&&data.current&&data.current.air_quality&&data.current.air_quality['gb-defra-index']/10}
+            formatTextValue={(value) => value / 10}
+            id="gauge-chart1"
+          />
+          <p className={styles.blockName}>AQI Index</p>
+        </div>
+      </div>}
     </div>
   );
 }

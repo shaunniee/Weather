@@ -4,7 +4,7 @@
   box-sizing: border-box;
   border: 0;
   font-size: 62.5%;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 *,
 *::before,
@@ -17,6 +17,7 @@ body,
 #root {
   height: 100%;
   background-color: #fefefe;
+  overflow-y: scroll;
 }
 
 body {

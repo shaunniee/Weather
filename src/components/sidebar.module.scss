@@ -1,0 +1,74 @@
+@import "../styles/variables.scss";
+.layout{
+  display: grid;
+  grid-template-columns: 10% 50% 30%;
+  padding: 2rem;
+  grid-gap: 4rem;
+}
+
+.sideBar{
+  width:10rem;
+  height:95vh;
+  background-color:$primary-color ;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+align-items: center;
+padding:2rem 0.5rem;
+  &__logo{
+    width:6rem;
+    background-color:#32425a;
+    padding: 1rem;
+    border-radius: 1rem;
+//     -webkit-box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 5px 5px 15px 5px rgba(0,0,0,0); 
+// box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 5px 5px 15px 5px rgba(0,0,0,0);
+  }
+  &__nav{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    margin-top:2.5rem;
+    font-size: 2rem;
+    color:rgb(154, 154, 154);
+    text-decoration: none;
+    span:nth-child(1){
+      font-size: 5rem;
+      margin-bottom:0.5rem;
+    }
+  }
+}
+.active{
+  color: white;
+}
+
+@media screen and (max-width: 800px) {
+  .sideBar{
+   display: flex;
+   padding: 1.5rem;
+   flex-direction: row !important;
+height: 8rem;
+width: 100%;
+align-items: center;
+&__nav{
+  margin: 0 1.5rem;
+}
+  }
+ }
+
+ @media screen and (max-width: 450px) {
+  .sideBar{
+
+ &__nav{
+  font-size: 1.4rem;
+  span:nth-child(1){
+    font-size: 4rem;
+    margin-bottom:0.5rem;
+  }
+
+ }
+ &__logo{
+  width:5rem;
+ }
+ 
+ }
+}

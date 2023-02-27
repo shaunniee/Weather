@@ -1,0 +1,53 @@
+@import "../styles/variables.scss";
+.container{
+    margin-top:3rem;
+    .backbtn{
+font-size: 4rem;
+color: #fff;
+font-weight: 900;
+cursor: pointer;
+margin-bottom: 2rem;
+display: block;
+    }
+}
+.card{
+    background-color: $primary-color;
+    border-radius:2rem;
+    padding: 1rem 2rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s;
+    cursor: pointer;
+    &:hover{
+        background-color:lighten($color: $primary-color, $amount: 30)
+    }
+}
+
+.card{
+    display: flex;
+    justify-content:space-between;
+    align-items:center;
+    .inner{
+        display: flex;
+       .location{
+        display: flex;
+        flex-direction: column;
+
+        margin-left:  1rem;
+        span:nth-child(1){
+            font-size:2rem;
+            font-weight: 800;
+            color: white;
+        }
+        span:nth-child(2){
+            font-size:1rem;
+            font-weight: 500;
+            color: rgb(183, 183, 183);
+        }
+       }
+    }
+    .temp{
+        font-size:2.5rem;
+        color: white;
+        font-weight: 900;
+    }
+}
