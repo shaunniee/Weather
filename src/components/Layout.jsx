@@ -1,21 +1,15 @@
 import React, { useEffect, useState } from "react";
-import MainCard from "../cards/MainCard";
 import styles from "./layout.module.scss";
-import Header from "../header/Header";
-import SideCard from "../cards/SideCard";
-import SideCard2 from "../cards/SideCard2";
-import SideCard3 from "../cards/SideCard3";
-import SearchList from "./SearchList";
 import Main from "../pages/Main";
 import { useSearchParams } from "react-router-dom";
 import api from "../helpers/api";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import SideBar from "./SideBar";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Settings from "../pages/Settings";
 function Layout() {
   const [data, setData] = useState({});
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
   const [forecast, setforecastData] = useState({});
   const [search, setSearch] = useState("");
   const [cities, setCities] = useState([
@@ -27,43 +21,45 @@ function Layout() {
   ]);
   const [searchActive, setSearchActive] = useState(false);
   const [searchParams] = useSearchParams();
-  const [settings,setSettings]=useState({
-    temp:{
-      celsius:true,
-      fahrenheit:false
-    },
-    wind:{
-      kph:true,
-      mph:false
-    },
-    pressure:{
-      Inches:true,
-      millibar:false
-    },
-    precipitation:{
-      in:true,
-      mm:false
-    },
-    distance:{
-      km:true,
-      miles:false
-    }
-  })
+  // const [settings,setSettings]=useState({
+  //   temp:{
+  //     celsius:true,
+  //     fahrenheit:false
+  //   },
+  //   wind:{
+  //     kph:true,
+  //     mph:false
+  //   },
+  //   pressure:{
+  //     Inches:true,
+  //     millibar:false
+  //   },
+  //   precipitation:{
+  //     in:true,
+  //     mm:false
+  //   },
+  //   distance:{
+  //     km:true,
+  //     miles:false
+  //   }
+  // })
   const searchQuery = searchParams.get("search");
-  const getLocation = () => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      if (position && position.coords) {
-        console.log("Latitude is :", position.coords.latitude);
-        console.log("Longitude is :", position.coords.longitude);
-        navigate({
-          path: "",
-          search: `?search=${position.coords.latitude},${position.coords.longitude}`,
-        });
-      } else {
-        alert("Turn on navigation");
-      }
-    });
-  };
+
+  // Get current location function
+  // const getLocation = () => {
+  //   navigator.geolocation.getCurrentPosition(function (position) {
+  //     if (position && position.coords) {
+  //       console.log("Latitude is :", position.coords.latitude);
+  //       console.log("Longitude is :", position.coords.longitude);
+  //       navigate({
+  //         path: "",
+  //         search: `?search=${position.coords.latitude},${position.coords.longitude}`,
+  //       });
+  //     } else {
+  //       alert("Turn on navigation");
+  //     }
+  //   });
+  // };
 
   useEffect(() => {
     if (searchQuery) {
@@ -109,75 +105,40 @@ function Layout() {
 
   return (
     <div className={styles.layout}>
-      {/* <SideBar searchActive={searchActive}/>
-      <div>
-        <Header
-          setCities={setCities}
-          setSearchActive={setSearchActive}
-          search={search}
-          setSearch={setSearch}
-        />
-        {searchActive ? (
-          <SearchList
-            setCities={setCities}
-            setSearchActive={setSearchActive}
-            search={search}
-            setSearch={setSearch}
-            cities={cities}
-          />
-        ) : (
-          <div>
-            <MainCard data={data} forecast={forecast} />
-            <SideCard forecast={forecast} />
-            <SideCard2 data={data} />
-          </div>
-        )}
-      </div>
-      <div>
-        {searchActive ? (
-          <div>
-            <MainCard data={data} forecast={forecast} />
-            <SideCard forecast={forecast} />
-            <SideCard2 data={data} />
-          </div>
-        ) : (
-          <SideCard3 forecast={forecast} />
-        )}
-      </div> */}
-
       <SideBar setSearchActive={setSearchActive} searchActive={searchActive} />
-    
-        <Routes>
-          <Route path="/" element={ <Main
-        data={data}
-        forecast={forecast}
-        setCities={setCities}
-        setSearchActive={setSearchActive}
-        search={search}
-        setSearch={setSearch}
-        searchActive={searchActive}
-        cities={cities}
-      />} />
-      <Route path="/settings" element={
-        <Settings
-        data={data}
-        forecast={forecast}
-        setCities={setCities}
-        setSearchActive={setSearchActive}
-        search={search}
-        setSearch={setSearch}
-        searchActive={searchActive}
-        cities={cities}
-      />}
-      />
-     
-        </Routes>
-  
-     
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Main
+              data={data}
+              forecast={forecast}
+              setCities={setCities}
+              setSearchActive={setSearchActive}
+              search={search}
+              setSearch={setSearch}
+              searchActive={searchActive}
+              cities={cities}
+            />
+          }
+        />
+        <Route
+          path="/settings"
+          element={
+            <Settings
+              data={data}
+              forecast={forecast}
+              setCities={setCities}
+              setSearchActive={setSearchActive}
+              search={search}
+              setSearch={setSearch}
+              searchActive={searchActive}
+              cities={cities}
+            />
+          }
+        />
+      </Routes>
     </div>
-    // header,main,side
-    // header search,main
-    // header ,setting ,main
   );
 }
 

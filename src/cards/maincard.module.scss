@@ -1,91 +1,85 @@
 @import "../styles/variables.scss";
-.card{
-    margin-top: 3rem;
-  // display: grid;
-  // grid-template-columns: 2fr 1fr;
-//   display: flex;
-// justify-content: space-between;
-display: grid;
-grid-template-columns: repeat(auto-fit,minmax(360px,1fr));
-  &__city{
+.card {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  &__city {
     font-size: 5rem;
     color: #fefefe;
     font-weight: 800;
   }
-  &__rain{
+  &__rain {
     color: #b2b1b1;
-    font-size:1.5rem;
+    font-size: 1.5rem;
   }
-  &__temp{
-    margin-top:3rem;
-    font-size:6rem;
+  &__temp {
+    margin-top: 3rem;
+    font-size: 6rem;
     font-weight: 900;
     color: #fefefe;
   }
-&__right{
-  img{
-    width:8rem;
+  &__right {
+    img {
+      width: 8rem;
+    }
   }
 }
-  
-}
 
-.time{
-  font-size:4rem;
+.time {
+  font-size: 4rem;
   color: white;
-  background-color:$primary-color;
-  padding: 2rem;border-radius: 1rem;
+  background-color: $primary-color;
+  padding: 2rem;
+  border-radius: 1rem;
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: fit-content;
   font-weight: 900;
 }
-.cardSection{
+.cardSection {
   padding: 1.5rem;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-gap: 2rem;
   align-items: center;
   justify-content: center;
- 
-  &__block{
+
+  &__block {
     width: 100%;
     height: max-content;
-    background-color:$primary-color;
+    background-color: $primary-color;
     border-radius: 2rem;
-    padding:1rem 0;
+    padding: 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-   
-    .blockName{
+
+    .blockName {
       text-align: center;
-      margin-top:1.5rem;
-      font-size:2rem;
+      margin-top: 1.5rem;
+      font-size: 2rem;
       font-weight: 900;
       color: white;
     }
-    .value{
-      display:flex;
+    .value {
+      display: flex;
       font-size: 2rem;
       align-items: center;
       justify-content: center;
-      .ico{
-        font-size:4rem;
+      .ico {
+        font-size: 4rem;
         color: white;
         margin-right: 1rem;
       }
-      span:nth-child(2){
-        font-size:3rem;
+      span:nth-child(2) {
+        font-size: 3rem;
         font-weight: 800;
-        ;
         color: white;
       }
     }
   }
-  
 }

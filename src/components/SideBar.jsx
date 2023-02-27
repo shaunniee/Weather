@@ -8,39 +8,38 @@ import styles from "./sidebar.module.scss";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-// import {history} from 'react-router-dom'
-function SideBar({ searchActive,setSearchActive }) {
+function SideBar({ searchActive, setSearchActive }) {
   let location = useLocation();
-console.log(location)
-  // const navigateTo=()=>{
-  //   history.push('/settings'+history.location.search)
-  // }
-  const setActive = ()=>{
-    setSearchActive(true)
-  }
-  
-  const setActiveWeather = ()=>{
-    setSearchActive(false)
-  }
-  
+  console.log(location);
+  const setActive = () => {
+    setSearchActive(true);
+  };
+
+  const setActiveWeather = () => {
+    setSearchActive(false);
+  };
+
   return (
     <div className={styles.sideBar}>
       <img className={styles.sideBar__logo} src={logo} alt="logo" />
       <Link
-            onClick={setActiveWeather}
-
-      to={{ pathname: "/", search: location.search }}
-        className={`${styles.sideBar__nav} ${location.pathname==="/"&&!searchActive && styles.active}`}
+        onClick={setActiveWeather}
+        to={{ pathname: "/", search: location.search }}
+        className={`${styles.sideBar__nav} ${
+          location.pathname === "/" && !searchActive && styles.active
+        }`}
       >
         <span>
           <TiWeatherPartlySunny />
         </span>
         <span>Weather</span>
       </Link>
-      <Link 
-      onClick={setActive}
-      to={{ pathname: "/", search: location.search }}
-        className={`${styles.sideBar__nav} ${location.pathname==="/"&&searchActive && styles.active}`}
+      <Link
+        onClick={setActive}
+        to={{ pathname: "/", search: location.search }}
+        className={`${styles.sideBar__nav} ${
+          location.pathname === "/" && searchActive && styles.active
+        }`}
       >
         <span>
           <GiModernCity />
@@ -55,7 +54,9 @@ console.log(location)
       </div>
 
       <Link
-        className={`${styles.sideBar__nav} ${location.pathname==="/settings"&& styles.active}`}
+        className={`${styles.sideBar__nav} ${
+          location.pathname === "/settings" && styles.active
+        }`}
         to={{ pathname: "/settings", search: location.search }}
       >
         <span>

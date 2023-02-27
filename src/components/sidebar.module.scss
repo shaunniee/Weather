@@ -20,8 +20,6 @@ padding:2rem 0.5rem;
     background-color:#32425a;
     padding: 1rem;
     border-radius: 1rem;
-//     -webkit-box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 5px 5px 15px 5px rgba(0,0,0,0); 
-// box-shadow: inset -1px 3px 8px 5px #1F87FF, 2px 5px 16px 0px #0B325E, 5px 5px 15px 5px rgba(0,0,0,0);
   }
   &__nav{
     display: flex;
@@ -49,6 +47,7 @@ padding:2rem 0.5rem;
 height: 8rem;
 width: 100%;
 align-items: center;
+justify-content: space-evenly;
 &__nav{
   margin: 0 1.5rem;
 }
